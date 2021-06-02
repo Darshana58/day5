@@ -1,0 +1,502 @@
+------------------DAY 5----------------------------
+--------------------------------------Program given by sir----------------------------------------------------------------------
+using System;
+public class Student
+{
+
+	public static void Main()
+	{
+		string[] sname = new string[10000];
+		int[] smarks = new int[10000];
+		int[] rollno = new int[10000];
+		int p;
+		char g;
+		for(int i=0;i<5;i++)
+		{
+			Console.WriteLine("enter name of student "+(i+1));
+			sname[i]=Console.ReadLine();
+			Console.WriteLine("enter total marks of student"+(i+1)+" out of 500");
+			smarks[i]=Convert.ToInt32(Console.ReadLine());
+			Console.WriteLine("enter roll no of student "+(i+1));
+			rollno[i]=Convert.ToInt32(Console.ReadLine());
+			
+		}
+			Console.Write("S.No\tRollNo\tName\t\tPercentage\t\tGrades");
+		Console.WriteLine();
+		for(int i=0;i<5;i++)
+		{
+			p=(smarks[i]*100)/500;
+			if(p>=90 &&p<=100)
+				g='A';
+			else if(p>=80&&p<=89)
+				g='B';
+			else if(p>=65&&p<=79)
+				g='C';
+			else if(p>=55&&p<=64)
+				g='D';
+			else if(p>=33&&p<=54)
+				g='E';
+			else
+				g='F';
+			Console.Write((i+1)+"\t\t\t\t"+rollno[i]+"\t\t\t\t"+sname[i]+"\t\t\t\t\t"+p+"\t\t\t"+g);
+		Console.WriteLine();	
+		}
+
+		
+	}	
+		}
+
+OR OR OR OR OR
+
+using System;
+ 
+public class Program
+    {
+        public static void Main(string[] args)
+        {
+    double rollno,physics,chemistry,maths,total;
+    double percent;
+    string nameofstudent,grade;
+
+    Console.Write("\n\n");
+    Console.Write("Calculate the total, percentage and division to take marks of three subjects:\n");
+    Console.Write("-------------------------------------------------------------------------------");
+    Console.Write("\n\n");
+
+
+    Console.Write("Enter Roll Number of the student :");
+    rollno = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("Enter Name of the Student :");
+    nameofstudent = Console.ReadLine();
+
+    Console.Write("Enter marks of Physics : ");
+    physics= Convert.ToInt32(Console.ReadLine());
+    Console.Write("Enter marks of  Chemistry : ");
+    chemistry = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Enter marks of Mathematics : ");
+    maths = Convert.ToInt32(Console.ReadLine());
+
+    total = physics+chemistry+maths;
+    percent = total/3.0;
+    if (percent>=90 && percent<=100)
+	 grade="A";
+    else
+	if (percent>=80 && percent<=89)
+	    grade="B";
+	else
+	    if (percent>=65 && percent<=79)
+		grade="C";
+	     else 
+			 if (percent>=55 && percent<=64)
+		grade="D";
+			else if(percent>=33 && percent<=54)
+				grade="E";
+			else
+		grade ="Fail";
+
+       Console.Write("\nRoll No : {0}\nName of Student : {1}\n",rollno,nameofstudent);
+       Console.Write("Marks in Physics: {0}\nMarks in Chemistry : {1}\nMarks in Mathematics : {2}\n",physics,chemistry,maths);
+       Console.Write("Total Marks = {0}\nPercentage = {1}\nGrade = {2}\n",total,percent,grade);
+}
+}
+-------------------------Sir Program on structure---------------------------------------------------------------------------------------------------------------------
+using System;
+   public struct Person
+   {
+    public string Name;
+    public int Age;
+    public int Weight;
+   }
+   public class Program
+   {
+    public static void Main()
+     {
+       Person p1;
+       p1.Name = "Vikash Verma";
+       p1.Age = 21;
+       p1.Weight = 80;
+       Console.WriteLine("Name :" + p1.Name + " \nAge : " +p1.Age + " \nWeight : " + p1.Weight);
+       Console.ReadLine();
+      }
+   }
+-------------------------Program on structure for student---------------------------------------------------------------------
+using System;
+   public struct Person
+   {
+    public string StudentName;
+    public int Studentrollno;
+    public int Studentmarks;
+   }
+   public class Program
+   {
+    public static void Main()
+     {
+       Person p1;
+       p1.StudentName = "Darshana Malsure";
+       p1.Studentrollno = 03;
+       p1.Studentmarks = 100;
+       Console.WriteLine("Student Name :" + p1.StudentName + " \nStudent Roll No : " +p1.Studentrollno + " \nStudent Marks : " + p1.Studentmarks);
+       Console.ReadLine();
+      }
+   }
+---------------------------Program on Enum-------------------------------------------------------------------------------------------------------
+using System;
+  public class Class1
+   {
+    //Normal 0
+    //Excellent 1
+    //Default=0
+    //Good=3
+    public enum DayofWeek
+    {
+    Sunday,Monday,Tuesday,Thursday,Friday,Saturday
+    }
+    public static void Main()
+    {
+     Console.WriteLine("{0} {1}","X","Y");
+     Console.WriteLine("Day of Week {0} {1}",Convert.ToInt32(DayofWeek.Sunday), DayofWeek.Sunday);
+     Console.WriteLine("Day of Week {0} {1}",(int)DayofWeek.Monday, DayofWeek.Monday);
+     Console.WriteLine("Day of Week {0} {1}",(int)DayofWeek.Tuesday, DayofWeek.Tuesday);
+     Console.ReadLine();
+     }
+    }
+---------------------------Program on enum using operations----------------------------------------------------------------------
+using System;
+  public class Class1
+   {
+    public enum Choiceenum
+    {
+     Addition,Multiplication,Subtraction,Divide
+    }
+    public static void Main()
+    {
+      Console.WriteLine("Enter Value of Number1 :- ");
+      int Number1= Convert.ToInt32(Console.ReadLine());
+      Console.WriteLine("Enter Value of Number2 :- ");
+      int Number2= Convert.ToInt32(Console.ReadLine());
+      Console.WriteLine("Enter a choice what operation you want to perform :- ");
+
+      
+      foreach(var item in Enum.GetValues(typeof(Choiceenum)))
+      {
+         Console.WriteLine(((int)item)+" "+item);
+     
+      }
+      int Choice = Convert.ToInt32(Console.ReadLine());
+      switch (Choice)
+      {
+       case(int)Choiceenum.Addition:
+            Console.WriteLine("Addition of two number is :- {0}", (Number1 + Number2));
+            break;
+       case(int)Choiceenum.Multiplication:
+             Console.WriteLine("Multiplication of two number is :- {0}", (Number1 * Number2));
+            break;
+       case(int)Choiceenum.Subtraction:
+             Console.WriteLine("Subtraction of two number is :- {0}", (Number1 - Number2));
+            break;
+       case(int)Choiceenum.Divide:
+             Console.WriteLine("Division of two number is :- {0}", (Number1/Number2));
+            break;
+       default:
+             Console.WriteLine("Please enter a valid choice");
+			  break;
+	  }
+     Console.ReadLine();
+    
+    }
+}
+------------------------------Enum Program logic using array------------------------------------------------------------
+using System;
+  public class Class1
+   {
+    public enum Choiceenum
+    {
+     Addition,Multiplication,Subtraction,Divide
+    }
+    public static void Main()
+    {
+      Console.WriteLine("Enter Value of Number1 :- ");
+      int Number1 = 0;
+      Console.WriteLine("Enter Value of Number2 :- ");
+      int Number2 = 0;
+      Console.WriteLine("Enter a choice what operation you want to perform :- ");
+      foreach (var item in Enum.GetValues(typeof(Choiceenum)))
+            {
+                Console.WriteLine(((int)item)+" " +item);
+            }
+            var arr = Enum.GetValues(typeof(Choiceenum));
+            for (int i = 0;i< arr.Length; i++)
+            {
+                Console.WriteLine(arr.GetValue(i));
+            }
+             int Choice = Convert.ToInt32(Console.ReadLine());
+      switch (Choice)
+      {
+       case(int)Choiceenum.Addition:
+            Console.WriteLine("Addition of two number is :- {0}", (Number1 + Number2));
+            break;
+       case(int)Choiceenum.Multiplication:
+             Console.WriteLine("Multiplication of two number is :- {0}", (Number1 * Number2));
+            break;
+       case(int)Choiceenum.Subtraction:
+             Console.WriteLine("Subtraction of two number is :- {0}", (Number1 - Number2));
+            break;
+       case(int)Choiceenum.Divide:
+             Console.WriteLine("Division of two number is :- {0}", (Number1/Number2));
+            break;
+            default:
+             Console.WriteLine("Please enter a valid choice");
+			  break;
+	  }
+     Console.ReadLine();
+    
+    }
+}
+------------------------------Enum program on student given by sir asking choice for gender for information----------------------------------------------------------------------------------------
+using System;
+ public struct Student
+{
+	public string name;
+	public int rollno;
+	public string gender;
+}
+	
+public class student
+{
+	public enum Gender
+	{
+		female=0,male=1
+	}
+
+	public static void Main()
+	{
+		Student[] arr = new Student[2];
+		arr[0].name="abc";
+		arr[0].rollno=12;
+		arr[1].name="def";
+		arr[1].rollno=32;
+			int c=0;
+		for(int i=0;i<2;i++)
+		{
+			Console.WriteLine("enter gender for student: "+(i+1));
+			Console.WriteLine("enter \n0.for female\n1.for male");
+			c=Convert.ToInt32(Console.ReadLine());
+			if(c==0)
+			arr[i].gender=Gender.female.ToString();
+			else if(c==1)
+			arr[i].gender=Gender.male.ToString();	
+		}
+		Console.WriteLine("Name:\t\tRollNo\t\tGender");
+		Console.WriteLine();
+		for(int i=0;i<2;i++)
+		{
+			Console.WriteLine(arr[i].name+"\t\t\t"+arr[i].rollno+"\t\t\t"+arr[i].gender);
+			Console.WriteLine();
+			
+         	}
+		
+	}
+}
+
+--------------------------------this program gives Exception handling error --------------------------------------------------------------------------------------------------------------------------------------------
+using System;
+  class Class2
+  {
+    public static void Main()
+     {
+      int a=5;
+      int c = a/ 0;
+      Console.WriteLine(c);
+      Console.ReadLine();
+      }
+    }
+------------------------------------------------------------------------------------
+using System;
+  class Class2
+  {
+    public static void Main()
+    {
+      int a = 5;
+      int [] arr = new int [2];
+      try
+      {
+       Console.WriteLine(arr[2]);
+       }
+       catch
+       {
+        Console.WriteLine("Some exception comes");
+       }
+      Console.ReadLine();
+     }
+  }
+--------------------------try and catch program which shows where error is coming------------------------------------------------------------
+using System;
+ class Class2
+ {
+   public static void Main()
+   {
+     int a = 5;
+     int[] arr = new int[2];
+     try
+     {
+       Console.WriteLine(arr[2]);
+     }
+     catch (Exception ex)
+     {
+       Console.WriteLine("Some exception comes\n error is : " + ex.Message + "\n stack Trace : " +e);
+     }
+     Console.ReadLine();
+    }
+  }
+--------------------------program on multiple catch statements------------------------------------------
+using System;
+ class Class2
+ {
+   public static void Main()
+   {
+     int a = 5;
+     int[] arr = new int[2];
+     try
+     {
+       Console.WriteLine(arr[2]);
+     }
+     catch (DivideByZeroException ex)
+     {
+       Console.WriteLine("Some exception comes\n error is : " + ex.Message + "\n stack Trace : " +e);
+     }
+     catch (IndexOutOfRangeException ex)
+     {
+       Console.WriteLine("Some exception comes\n error is : " + ex.Message + "\n stack Trace : " +e);
+     }
+     Console.ReadLine();
+    }
+  }
+-------------------finally keyword will run in any case----------------------------------------------------------
+using System;
+ class Class2
+ {
+   public static void Main()
+   {
+     int a = 5;
+     int[] arr = new int[2];
+     try
+     {
+       Console.WriteLine(arr[2]);
+     }
+     catch (DivideByZeroException ex)
+     {
+       Console.WriteLine("Some exception comes\n error is : " + ex.Message + "\n stack Trace : " +e);
+     }
+     catch (IndexOutOfRangeException ex)
+     {
+       try
+       {
+       
+        }
+        catch
+        {
+   
+        }
+       Console.WriteLine("Some exception comes\n error is : " + ex.Message + "\n stack Trace : " +e);
+     }
+      finally
+      {
+         Console.WriteLine("I am an Finally Block");
+      }
+     Console.ReadLine();
+    }
+  }
+-----------------------------throw keyword program-----------------------------------------------------
+using System;
+class classSample
+{
+   public void errr()
+   {
+        try
+         {
+           sample();
+         }
+         catch
+         {
+           throw;
+         } 
+   }
+     public void sample()
+      {
+        throw new TimeoutException();
+      }
+}
+class Class3
+ {
+   public static void Main()
+   {
+      classSample classSample=null;
+      
+     if(classSample == null)
+      {
+        throw new Execption();
+      }
+      else
+      {
+       Console.WriteLine("Perform my tasks");
+      }
+  
+     
+   }
+ }
+------------------------------------exception program---------------------------------------
+using System;
+  public class MyException : Exception
+   {
+    public MyException(string message):base(message)
+     {
+  
+     }
+   }
+ public class Fitness
+  {
+   int points = 0;
+   public void ShowResult()
+    {
+     if(points < 110)
+        {
+          throw new MyException("Player failed the fitness test!");
+        }
+       else
+       {
+        Console.WriteLine("Player passes the fitness test");
+        }
+    }
+}
+   class Class4
+    {
+       public static void Main()
+         {
+           Fitness f = new Fitness();
+           try
+           {
+              f.ShowResult();
+           }
+           catch(MyException e)
+            {
+             Console.WriteLine("User Defined exeptons: {0}",e.Messsage);
+            }
+            Console.ReadLine();
+          }
+      }
+------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
