@@ -1,0 +1,336 @@
+--------------------------Day 6----------------------------------------------------
+
+-------------------Program on dispose pattern-------------------------------------------
+
+
+using System;
+ //Dispose Pattern
+  public sealed class Myclass : IDisposable
+   {
+    Objects objects;
+    private bool_disposed;//boolean flag to stop us calling Dispose(twice)
+   
+   public void Dispose()
+   {
+     Dispose(true);
+     GC.SuppressFinalize(this);
+   }
+   private void Dispose(bool disposing)
+   {
+     if(_disposed)
+      {
+         if(disposing)
+          {
+            var d = objects as IDisposable;
+            if (d!=null)d.Dispose();
+           }
+       }
+        _disposed = true;
+      }
+}
+ class Program
+     {
+     public static void Main()
+       {
+       }
+      }
+----------------------program on arraylist--------------------------------
+using System;
+using System.Collections.Generic;
+ class Class1
+{
+     public static void Main()
+       {
+        //ArrayList
+        ArrayList arrayList = new ArrayList();
+        arrayList.Add("Vikash");
+        arrayList.Add("Soham");
+        arrayList.Add(2); //we can add number
+        arrayList.Remove(2);//we can remove it also
+        for (int i = 0;i < arrayList.Count;i++)
+         {
+             Console.WriteLine(arrayList[i]);
+         }
+          Console.ReadLine();
+       }
+}
+------------------programs on system.collections--------------------------------------
+--------------------------------program on hashtable-------------------------------------------
+using System;
+using System.Collections.Generic;
+ class Class1
+{
+     public static void Main()
+       {
+          //Hashtable
+          Hashtable hashtable = new Hashtable();
+          hashtable.Add(101,"Vikash");
+          hashtable.Add(102,"Raj");
+          hashtable.Add(103,"Sujan Singh");
+          ICollection keys = hashtable.Keys;
+          foreach (var item in keys)
+          {
+           Console.WriteLine(item + " :-" + hashtable[item]);
+          }
+           Console.ReadLine();
+       }
+}
+----------------------------program on Queue--------------------------------------------
+using System;
+class Class2
+  {
+   public static void Main()
+     {
+      //Queue
+      Queue queue = new Queue();
+      queue.Enqueue("C#");
+      queue.Enqueue("PHP");
+      queue.Enqueue("Java");
+      queue.Dequeue();
+      Console.WriteLine(queue.Peek());
+      Console.ReadLine();
+     }
+   }
+----------------------program on stack------------------------------------------------
+using System;
+class Class2
+  {
+   public static void Main()
+     {
+      //Stack
+       Stack stack = new Stack();
+       stack.Push("C#");
+       stack.Push("PHP");
+       stack.Push("Java");
+       stack.Pop();
+       Console.WriteLine(stack.Peek());
+       Console.ReadLine();
+      }
+  }
+---------------------------------program on stack queue arraylist hashtable by sir----------------------------------
+
+//Full Program
+using System;
+
+using System.Collections;
+
+namespace ConsoleApp11
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            //1.ArrayList
+            ArrayList arrayList = new ArrayList();
+            arrayList.Add("Darshana");
+            arrayList.Add("Malsure");
+            arrayList.Add(1);
+            arrayList.Remove(1);
+            for (int i = 0; i < arrayList.Count; i++)
+            {
+                Console.WriteLine(arrayList[i]);
+            }
+
+
+            //2.Hashtable
+            Hashtable hashtable = new Hashtable();
+            hashtable.Add(101, "Darshana");
+            hashtable.Add(102, "Malsure");
+            hashtable.Add(103, "Hello Good Morning");
+            ICollection keys = hashtable.Keys;
+            foreach (var item in keys)
+            {
+                Console.WriteLine(item + ":-" + hashtable[item]);
+            }
+
+
+
+            //3Queue
+            Queue queue = new Queue();
+            queue.Enqueue("C#");
+            queue.Enqueue("PHP");
+            queue.Enqueue("JAVA");
+            queue.Dequeue();
+            Console.WriteLine(queue.Peek());
+            
+            
+            //4.Stack
+            Stack stack = new Stack();
+            stack.Push("C#");
+            stack.Push("PHP");
+            stack.Push("JAVA");
+            stack.Pop();
+            Console.WriteLine(stack.Peek());
+
+            Console.ReadLine();
+        }
+    }
+}
+
+--------------------------------------program on system.collection.generics----------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+class Class3
+  {
+    public static void Main()
+     {
+      //System.Collections
+      System.Collections.Stack stack1 = new System.Collections.Stack();
+      stack1.Push(1);
+      int x1 = (int)stack1.Pop();
+      
+   //System.Collections.Generic
+    Stack<int> stack = new Stack<int>();
+    stack.Push(1);
+    int x = stack.Pop();
+
+
+    Dictionary<int,string>keyValuePairs = new Dictionary<int,string>();
+    keyValuePairs.Add(1,"Vikash");
+    keyValuePairs.Remove(1);
+    keyValuePairs.Add(2,"Soham Sen");
+    keyValuePairs.Add(3,"Anjali Kumari");
+    foreach (var item in keyValuePairs)
+    {
+     Console.WriteLine(item.Key + " " +item.Value);
+    }
+     Console.ReadLine();
+     }
+  }
+-------------------------program using dict to count how many times 'a' comes in aaabbcc------------------------------------------
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+public class Program
+{
+	public static void Main()
+	{
+
+    
+ string Input = "aabbbbcd";
+            Dictionary <char, int> keyValuePairs = new Dictionary <char, int>();
+
+
+            foreach (var item in Input)
+            {
+                int counter;
+                keyValuePairs.TryGetValue(item, out counter);//if item is there return tha value
+                if(counter==0)
+                {
+                    keyValuePairs.Add(item, 1);
+                }
+                else
+                {
+                    keyValuePairs.Remove(item);
+                    keyValuePairs.Add(item, counter+1);
+                }
+            }
+            foreach (var item in keyValuePairs)
+            {
+                Console.WriteLine(item.Key+" - "+item.Value);
+            }
+            Console.ReadLine();
+
+
+
+		
+	}
+}
+---------------------------------------------------------------------------------------
+using System;
+ class Class4
+ {
+  public static void Main()
+  {
+   //List 
+    List<int> vs = new List<int>(); //similar to arrayListCLASS
+    Queue<int> vs1 = new Queue<int>();
+    Stack<int> vs1 = new Stack<int>();
+    Hashset<int> vs1 = new Hashset<int>();
+  }
+}
+-------------------------------------------------------------------------
+using System;
+
+public class StoreDate : IEnumerable
+  {
+   List<int> items = new LinkedList<int>();
+
+   public void Add(int i)
+    {
+      items.Add(i);
+    }
+   public IEnumerator GetEnumerator()
+   {
+     foreach (var item in items)
+     {
+     yield return item;
+     }
+}
+   public class Class5
+  {
+  public static void Main()
+  {
+    StoreData list = new StoreData();
+    list.Add(1);
+    list.Add(2);
+    foreach(var item in list)
+     {
+     Console.WriteLine(item);
+     }
+
+  }
+---------------------------------goto statement program----------------------------
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+ public class Class6
+  {
+     public static void Main()
+     {
+         int x = 1;
+       Loop:
+          x++;
+          if(x < 20)
+          {
+           Console.WriteLine(x);
+           goto Loop;
+          }
+        
+        Console.ReadLine();
+     }
+ }
+----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
